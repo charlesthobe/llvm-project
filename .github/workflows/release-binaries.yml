@@ -81,6 +81,9 @@ jobs:
         ref: ${{ needs.prepare.outputs.ref }}
         path: ${{ needs.prepare.outputs.build-dir }}/llvm-project
 
+    - name: Sync APT repositories
+      run: sudo apt update
+
     - name: Install Brew build dependencies
       if: matrix.target.brew-build-deps != ''
       run: brew install ${{ matrix.target.brew-build-deps }}

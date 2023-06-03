@@ -24,10 +24,12 @@ jobs:
           release_version=$(echo "${{ github.ref_name }}" | sed 's/llvmorg-//g')
           echo "release-version=$release_version" >> $GITHUB_OUTPUT
 
+      - name: Sync APT repositories
+        run: sudo apt update
+
       - name: Install Dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y \
+          sudo apt install -y \
               doxygen \
               graphviz \
               python3-github \
@@ -83,8 +85,12 @@ jobs:
       - name: Checkout LLVM
         uses: actions/checkout@v3
 
+      - name: Sync APT repositories
+        run: sudo apt update
+
       - name: Install dependencies
-        run: apt-get install -y python3-setuptools
+        run: |
+          sudo apt install -y python3-setuptools
 
       - name: Test lit
         run: |
