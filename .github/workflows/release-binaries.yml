@@ -85,6 +85,9 @@ jobs:
       if: matrix.target.brew-build-deps != ''
       run: brew install ${{ matrix.target.brew-build-deps }}
 
+    - name: Sync APT repositories
+      run: sudo apt update
+
     - name: Install Debian build dependencies
       if: matrix.target.debian-build-deps != ''
       run: sudo apt install ${{ matrix.target.debian-build-deps }}

@@ -57,6 +57,9 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+      - name: Sync APT repositories
+        if: startsWith(matrix.os, 'ubuntu')
+        run: sudo apt update
       - name: Install Ninja
         uses: llvm/actions/install-ninja@main
       # actions/checkout deletes any existing files in the new git directory,
