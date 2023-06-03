@@ -34,7 +34,7 @@ concurrency:
 
 jobs:
   build_lldb:
-    if: github.repository_owner == 'llvm'
+    #if: github.repository_owner == 'llvm'
     name: Build lldb
     uses: ./.github/workflows/llvm-project-tests.yml
     with:

@@ -12,10 +12,10 @@ github_user=$1
 tag=$2
 upload=$3
 
-if [[ "$github_user" != "tstellar" && "$github_user" != "tru" ]]; then
-  echo "ERROR: User not allowed: $github_user"
-  exit 1
-fi
+#if [[ "$github_user" != "tstellar" && "$github_user" != "tru" ]]; then
+#  echo "ERROR: User not allowed: $github_user"
+#  exit 1
+#fi
 pattern='^llvmorg-[0-9]\+\.[0-9]\+\.[0-9]\+\(-rc[0-9]\+\)\?$'
 echo "$tag" | grep -e $pattern
 if [ $? != 0 ]; then
