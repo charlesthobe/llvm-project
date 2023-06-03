@@ -14,7 +14,7 @@ jobs:
     permissions:
       contents: write # To upload assets to release.
     runs-on: ubuntu-latest
-    if: github.repository == 'llvm/llvm-project'
+    #if: github.repository == 'llvm/llvm-project'
     steps:
       - name: Validate Tag
         id: validate-tag
@@ -26,8 +26,8 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y \
+          apt update
+          apt install -y \
               doxygen \
               graphviz \
               python3-github \
@@ -78,13 +78,15 @@ jobs:
 
   release-lit:
     runs-on: ubuntu-latest
-    if: github.repository == 'llvm/llvm-project'
+    #if: github.repository == 'llvm/llvm-project'
     steps:
       - name: Checkout LLVM
         uses: actions/checkout@v3
 
       - name: Install dependencies
-        run: apt-get install -y python3-setuptools
+        run: |
+          apt update
+          apt install -y python3-setuptools
 
       - name: Test lit
         run: |
