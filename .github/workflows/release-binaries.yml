@@ -87,7 +87,9 @@ jobs:
 
     - name: Install Debian build dependencies
       if: matrix.target.debian-build-deps != ''
-      run: sudo apt install ${{ matrix.target.debian-build-deps }}
+      run: |
+        apt update
+        apt install ${{ matrix.target.debian-build-deps }}
 
     - name: Set macOS build env variables
       if: runner.os == 'macOS'
